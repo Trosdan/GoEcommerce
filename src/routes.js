@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {
   createAppContainer,
   createBottomTabNavigator,
@@ -38,8 +40,29 @@ const Routes = createAppContainer(
       Shop,
     },
     {
+      defaultNavigationOptions: ({ navigation }) => ({
+        tabBarIcon: ({ tintColor }) => {
+          const { routeName } = navigation.state;
+
+          let iconName;
+
+          switch (routeName) {
+            case 'Home':
+              iconName = 'home';
+              break;
+            case 'Shop':
+              iconName = 'cart';
+              break;
+            default:
+              break;
+          }
+
+          return <Icon name={iconName} size={24} color={tintColor} />;
+        },
+      }),
       tabBarOptions: {
-        activeTintColor: 'tomato',
+        showLabel: false,
+        activeTintColor: colors.primary,
         inactiveTintColor: 'gray',
       },
     },

@@ -17,6 +17,7 @@ import {
 const categories = ({ categories, productsLoadCategory, products }) => (
   <Container>
     <CategoriesList
+      showsHorizontalScrollIndicator={false}
       horizontal
       data={categories}
       keyExtractor={item => String(item.id)}

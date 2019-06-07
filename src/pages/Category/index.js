@@ -37,15 +37,15 @@ class Category extends Component {
           categories={categories.data}
           productsLoadCategory={this.productsLoadCategory}
         />
-        {products.data.products ? (
+        {products.loading ? (
+          <ActivityIndicator size="large" style={{ flex: 1 }} />
+        ) : (
           <ProductsList
             numColumns={2}
             data={products.data.products}
             keyExtractor={item => String(item.id)}
             renderItem={({ item }) => <ProductCard product={item} />}
           />
-        ) : (
-          <ActivityIndicator size="large" style={{ flex: 1 }} />
         )}
       </Container>
     );

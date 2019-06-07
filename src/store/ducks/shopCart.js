@@ -4,9 +4,8 @@ import Immutable from 'seamless-immutable';
 /* Types & Action Creators */
 
 const { Types, Creators } = createActions({
-  categoriesLoadRequest: null,
-  categoriesLoadSuccess: ['data'],
-  categoriesLoadFailure: null,
+  addShopCart: ['data'],
+  removeShopCart: ['data'],
 });
 
 export const CategoriesTypes = Types;
