@@ -11,10 +11,12 @@ import { colors } from '~/styles/index';
 
 import Category from '~/pages/Category';
 import ShopCart from '~/pages/ShopCart';
+import ProductDetails from '~/pages/ProductDetails';
 
 const Home = createStackNavigator(
   {
     Category,
+    ProductDetails,
   },
   {
     defaultNavigationOptions: {

@@ -15,7 +15,14 @@ export default Creators;
 /* Initial State */
 
 export const INITIAL_STATE = Immutable({
-  data: null,
+  data: {
+    id: 0,
+    name: 'None',
+    brand: 'none',
+    image:
+      'https://t-static.dafiti.com.br/czCvp3wBNPfehf7omYZfJacnxPY=/fit-in/427x620/dafitistatic-a.akamaihd.net%2fp%2fquiksilver-camiseta-quiksilver-hyperas-preta-8710-7136243-1-product.jpg',
+    price: 0.0,
+  },
   loading: false,
   error: '',
 });

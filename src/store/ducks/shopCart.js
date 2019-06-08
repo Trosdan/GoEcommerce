@@ -4,19 +4,19 @@ import Immutable from 'seamless-immutable';
 /* Types & Action Creators */
 
 const { Types, Creators } = createActions({
-  addShopCart: ['data'],
-  removeShopCart: ['data'],
+  addShopCart: ['product'],
+  removeShopCart: ['product'],
+  valueShopCart: ['value'],
 });
 
-export const CategoriesTypes = Types;
+export const ShopCartTypes = Types;
 export default Creators;
 
 /* Initial State */
 
 export const INITIAL_STATE = Immutable({
   data: [],
-  loading: false,
-  error: '',
+  value: 0,
 });
 
 /* Reducers */
@@ -27,7 +27,7 @@ export const INITIAL_STATE = Immutable({
 /* Reducers to types */
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [Types.CATEGORIES_LOAD_REQUEST]: state => state.merge({ loading: true }),
-  [Types.CATEGORIES_LOAD_SUCCESS]: (state, { data }) => state.merge({ data, loading: false }),
-  [Types.CATEGORIES_LOAD_FAILURE]: state => state.merge({ loading: false }),
+  [Types.ADD_SHOP_CART]: (state, { product }) => state.merge({ data: [...state.data, product] }),
+  [Types.REMOVE_SHOP_CART]: (state, { product }) => {},
+  [Types.VALUE_SHOP_CART]: (state, { value }) => state.merge({ value }),
 });

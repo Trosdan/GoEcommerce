@@ -1,13 +1,10 @@
-import { put, call } from 'redux-saga/effects';
-import api from '~/services/api';
+import { put, select } from 'redux-saga/effects';
 
-import CategoriesActions from '~/store/ducks/categories';
+import ShopCartActions from '~/store/ducks/shopCart';
 
-export function* getCategories() {
-  try {
-    const { data } = yield call(api.get, 'categories');
-    yield put(CategoriesActions.categoriesLoadSuccess(data));
-  } catch (err) {
-    yield put(CategoriesActions.categoriesLoadFailure());
-  }
+export function* setValue() {
+  let value = 0;
+  const { data } = yield select(state => state.shopCart);
+  data.map(a => (value += a.price));
+  yield put(ShopCartActions.valueShopCart(value));
 }

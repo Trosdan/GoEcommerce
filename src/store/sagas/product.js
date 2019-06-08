@@ -6,8 +6,8 @@ import ProductActions from '~/store/ducks/product';
 export function* getProduct({ id }) {
   try {
     const { data } = yield call(api.get, `products/${id}`);
-    yield put(ProductActions.ProductLoadSuccess(data));
+    yield put(ProductActions.productLoadSuccess(data));
   } catch (err) {
-    yield put(ProductActions.ProductLoadFailure());
+    yield put(ProductActions.productLoadFailure());
   }
 }

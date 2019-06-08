@@ -11,7 +11,7 @@ export const Container = styled.TouchableOpacity`
 
 export const Image = styled.Image`
   width: 150px;
-  height: 200px;
+  height: 250px;
   border-width: 1px;
   align-self: center;
 `;
