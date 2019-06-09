@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 
 import ShopCartActions from '~/store/ducks/shopCart';
 
+import ProductCardCart from '~/components/productCardCart';
+
 import {
   Container, ValueView, ValueTitle, ValueText, ShopCartList,
 } from './styles';
@@ -32,7 +34,7 @@ class ShopCart extends Component {
           <ShopCartList
             data={shopCart.data}
             keyExtractor={() => String(Math.random() * 1000)}
-            renderItem={({ item }) => <ValueText>{item.name}</ValueText>}
+            renderItem={({ item }) => <ProductCardCart product={item} />}
           />
         </Container>
         <ValueView>

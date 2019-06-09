@@ -3,7 +3,7 @@ import { all, takeLatest } from 'redux-saga/effects';
 import { getCategories } from './categories';
 import { getProduct } from './product';
 import { getProducts } from './products';
-import { setValue } from './shopCart';
+import { addProduct, setValue, removeProduct } from './shopCart';
 
 import { CategoriesTypes } from '~/store/ducks/categories';
 import { ProductTypes } from '~/store/ducks/product';
@@ -15,7 +15,9 @@ export default function* rootSaga() {
     takeLatest(CategoriesTypes.CATEGORIES_LOAD_REQUEST, getCategories),
     takeLatest(ProductsTypes.PRODUCTS_LOAD_REQUEST, getProducts),
     takeLatest(ProductTypes.PRODUCT_LOAD_REQUEST, getProduct),
-    takeLatest(ShopCartTypes.ADD_SHOP_CART, setValue),
-    takeLatest(ShopCartTypes.REMOVE_SHOP_CART, setValue),
+    takeLatest(ShopCartTypes.ADD_SHOP_CART_REQUEST, addProduct),
+    takeLatest(ShopCartTypes.ADD_SHOP_CART_SUCCESS, setValue),
+    takeLatest(ShopCartTypes.REMOVE_SHOP_CART_REQUEST, removeProduct),
+    takeLatest(ShopCartTypes.REMOVE_SHOP_CART_SUCCESS, setValue),
   ]);
 }

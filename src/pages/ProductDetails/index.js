@@ -34,7 +34,7 @@ class ProductDetails extends Component {
   }
 
   render() {
-    const { product, addShopCart } = this.props;
+    const { product, addShopCartRequest } = this.props;
     return (
       <Container>
         {product.loading ? (
@@ -52,7 +52,7 @@ class ProductDetails extends Component {
                 {product.data.price}
               </Price>
             </InfoView>
-            <ButtonBuy onPress={() => addShopCart(product.data)}>
+            <ButtonBuy onPress={() => addShopCartRequest(product.data)}>
               <ButtonBuyText>Adicionar ao carrinho</ButtonBuyText>
             </ButtonBuy>
           </Content>

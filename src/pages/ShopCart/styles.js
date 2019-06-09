@@ -9,6 +9,8 @@ export const Container = styled.View`
 export const ShopCartList = styled.FlatList``;
 
 export const ValueView = styled.View`
+  border-top-width: 1px;
+  border-color: ${colors.light};
   padding: 20px;
   justify-content: center;
   align-items: center;
