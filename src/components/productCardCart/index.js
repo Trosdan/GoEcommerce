@@ -17,7 +17,7 @@ import {
   RemoveItem,
 } from './styles';
 
-const productCardCart = ({ product, removeShopCartRequest }) => (
+const productCardCart = ({ product, removeShopCartRequest, setQuantityRequest }) => (
   <Container>
     <Image source={{ uri: product.image }} />
     <InfoView>
@@ -28,7 +28,10 @@ const productCardCart = ({ product, removeShopCartRequest }) => (
         {product.price}
       </Price>
     </InfoView>
-    <QuantityInput value={product.quantity} />
+    <QuantityInput
+      value={product.quantity}
+      onChangeText={text => setQuantityRequest({ ...product, quantity: text })}
+    />
     <RemoveItem onPress={() => removeShopCartRequest(product)}>
       <Icon name="close" size={14} />
     </RemoveItem>

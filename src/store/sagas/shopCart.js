@@ -7,7 +7,7 @@ export function* addProduct({ product }) {
     ShopCartActions.addShopCartSuccess({
       ...product,
       quantity: '1',
-      id: parseInt(Math.random() * 1000),
+      id: parseInt(Math.random() * 1000, 10),
     }),
   );
 }
@@ -16,6 +16,13 @@ export function* removeProduct({ product }) {
   const { data } = yield select(state => state.shopCart);
   const updatedItems = data.filter(item => item.id !== product.id);
   yield put(ShopCartActions.removeShopCartSuccess(updatedItems));
+}
+
+export function* changeQuantity({ product }) {
+  const { data } = yield select(state => state.shopCart);
+  const updatedItems = data.findIndex(item => item.id === product.id);
+  data[updatedItems] = { ...product, quantity: product.quantity };
+  yield put(ShopCartActions.setQuantitySuccess(data));
 }
 
 export function* setValue() {
