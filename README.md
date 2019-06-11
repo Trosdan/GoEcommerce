@@ -1,4 +1,4 @@
-# GitIssues
+# GoEcommerce
 
 Project in React Native of an Ecommerce where it is possible to add and remove products from a shopping cart
 
