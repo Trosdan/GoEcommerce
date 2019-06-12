@@ -7,6 +7,8 @@ import ShopCartActions from '~/store/ducks/shopCart';
 
 import ProductCardCart from '~/components/productCardCart';
 
+import PropTypes from 'prop-types';
+
 import {
   Container, ValueView, ValueTitle, ValueText, ShopCartList,
 } from './styles';
@@ -16,12 +18,20 @@ class ShopCart extends Component {
     title: 'Carrinho',
   };
 
+  propTypes = {
+    valueShopCart: PropTypes.func.isRequired,
+    shopCart: PropTypes.shape({
+      data: PropTypes.any,
+    }).isRequired,
+  };
+
   subtotal = () => {
     const { shopCart, valueShopCart } = this.props;
     let { value } = shopCart;
 
     shopCart.data.map((a) => {
       value += a.price;
+      return a;
     });
     valueShopCart(value);
   };

@@ -10,11 +10,24 @@ import ProductsActions from '~/store/ducks/products';
 import TabCategories from '~/components/categories';
 import ProductCard from '~/components/productCard';
 
+import PropTypes from 'prop-types';
+
 import { Container, ProductsList } from './styles';
 
 class Category extends Component {
   static navigationOptions = {
     title: 'GoCommerce',
+  };
+
+  propTypes = {
+    categoriesLoadRequest: PropTypes.func.isRequired,
+    productsLoadRequest: PropTypes.func.isRequired,
+    categories: PropTypes.shape({
+      data: PropTypes.any,
+    }).isRequired,
+    products: PropTypes.shape({
+      data: PropTypes.any,
+    }).isRequired,
   };
 
   componentDidMount() {
@@ -57,7 +70,13 @@ const mapStateToProps = state => ({
   products: state.products,
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators({ ...CategoriesActions, ...ProductsActions }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators(
+  {
+    ...CategoriesActions,
+    ...ProductsActions,
+  },
+  dispatch,
+);
 
 export default connect(
   mapStateToProps,

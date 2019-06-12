@@ -23,5 +23,6 @@ export default function* rootSaga() {
     takeLatest(ShopCartTypes.REMOVE_SHOP_CART_SUCCESS, setValue),
 
     takeLatest(ShopCartTypes.SET_QUANTITY_REQUEST, changeQuantity),
+    takeLatest(ShopCartTypes.SET_QUANTITY_SUCCESS, setValue),
   ]);
 }

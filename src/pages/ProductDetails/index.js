@@ -8,6 +8,8 @@ import { connect } from 'react-redux';
 import ProductActions from '~/store/ducks/product';
 import ShopCartActions from '~/store/ducks/shopCart';
 
+import PropTypes from 'prop-types';
+
 import {
   Container,
   Content,
@@ -24,6 +26,20 @@ import {
 class ProductDetails extends Component {
   static navigationOptions = {
     title: 'Detalhe do produto',
+  };
+
+  propTypes = {
+    navigation: PropTypes.func.isRequired,
+    productLoadRequest: PropTypes.func.isRequired,
+    addShopCartRequest: PropTypes.func.isRequired,
+    product: PropTypes.shape({
+      data: PropTypes.shape({
+        image: PropTypes.string,
+        name: PropTypes.string,
+        brand: PropTypes.string,
+        price: PropTypes.number,
+      }).isRequired,
+    }).isRequired,
   };
 
   componentDidMount() {
@@ -66,7 +82,13 @@ const mapStateToProps = state => ({
   product: state.product,
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators({ ...ProductActions, ...ShopCartActions }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators(
+  {
+    ...ProductActions,
+    ...ShopCartActions,
+  },
+  dispatch,
+);
 
 export default connect(
   mapStateToProps,

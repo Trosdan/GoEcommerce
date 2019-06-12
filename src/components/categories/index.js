@@ -1,7 +1,9 @@
 import React from 'react';
 
-import { bindActionCreators } from 'redux';
+// import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+
+import PropTypes from 'prop-types';
 
 import {
   Container,
@@ -14,7 +16,7 @@ import {
 
 // import { Container } from './styles';
 
-const categories = ({ categories, productsLoadCategory, products }) => (
+const Categories = ({ categories, productsLoadCategory, products }) => (
   <Container>
     <CategoriesList
       showsHorizontalScrollIndicator={false}
@@ -35,6 +37,12 @@ const categories = ({ categories, productsLoadCategory, products }) => (
   </Container>
 );
 
+Categories.propTypes = {
+  productsLoadCategory: PropTypes.func.isRequired,
+  categories: PropTypes.shape.isRequired,
+  products: PropTypes.shape.isRequired,
+};
+
 const mapStateToProps = state => ({
   products: state.products,
 });
@@ -45,4 +53,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   // mapDispatchToProps
-)(categories);
+)(Categories);

@@ -32,6 +32,6 @@ export const removeShopCart = state => state.merge({ data: [] });
 export const reducer = createReducer(INITIAL_STATE, {
   [Types.ADD_SHOP_CART_SUCCESS]: (state, { product }) => state.merge({ data: [...state.data, product] }),
   [Types.REMOVE_SHOP_CART_SUCCESS]: (state, { data }) => state.merge({ data }),
-  [Types.SET_QUANTITY_SUCCESS]: (state, { data }) => state.merge({ data }),
+  [Types.SET_QUANTITY_SUCCESS]: (state, { data }) => state.setIn(['data', data.index], data.product),
   [Types.VALUE_SHOP_CART]: (state, { value }) => state.merge({ value }),
 });

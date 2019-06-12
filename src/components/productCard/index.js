@@ -2,6 +2,8 @@ import React from 'react';
 
 import { withNavigation } from 'react-navigation';
 
+import PropTypes from 'prop-types';
+
 import {
   Container, Image, Name, Brand, Price,
 } from './styles';
@@ -17,5 +19,16 @@ const productCard = ({ product, navigation }) => (
     </Price>
   </Container>
 );
+
+productCard.propTypes = {
+  navigation: PropTypes.func.isRequired,
+  product: PropTypes.shape({
+    id: PropTypes.number,
+    image: PropTypes.string,
+    name: PropTypes.string,
+    brand: PropTypes.string,
+    price: PropTypes.number,
+  }).isRequired,
+};
 
 export default withNavigation(productCard);
